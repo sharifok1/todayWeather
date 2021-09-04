@@ -2,6 +2,7 @@
 const search = ()=>{
 const searchInput = document.getElementById('search-field')
 const searchText = searchInput.value;
+document.getElementById('no-result').textContent=''
 if(searchText === ''){
     const emptyMsg = document.getElementById('emptyText')
     emptyMsg.innerHTML=`<h4>Please enter city name to know weather status!!!</h4>`;
@@ -16,9 +17,16 @@ fetch(url)
 searchInput.value = ''
 document.getElementById('emptyText').textContent='';
 document.getElementById('weather-status').textContent = ''
+
 }
 document.getElementById('weather-status').textContent = ''
 }
+// enter button for search//
+document.getElementById('search-field').addEventListener('keyup',function(event){
+    if(event.keyCode ===13){
+    search()
+}
+})
 // background change function-------------------------
 const changeBackground = imgUrl=>{
     const background = document.getElementById('background');
@@ -32,6 +40,10 @@ const changeBackground = imgUrl=>{
 
 // display weather status--------------------------------/
 const loadData = data =>{
+    if(data.cod === '404'){
+        const emptyResult = document.getElementById('no-result')
+        emptyResult.innerHTML=`<h4 class="text-white">invalid name or city not found. <br> Please try again by correct city name!!!</h4>`;
+    }
         //---- change background----
         const changeWeather = (condition,imgUrl)=>{
             if(data.weather[0].main == condition){
@@ -43,8 +55,6 @@ const loadData = data =>{
         changeWeather('Haze','url(img/haze.jpg)')
         changeWeather('Clear','url(img/clear.jpg)')
         changeWeather('Thunderstorm','url(img/Thunderstorm.jpg)')
-
-
 
     const weatherStatus =document.getElementById('weather-status');
     weatherStatus.innerHTML=`

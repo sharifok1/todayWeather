@@ -14,12 +14,14 @@
     <h1 class="text-center pt-2 text-white">Todays weather</h1>
     <div class="container">
         <div class="text-center">
-            <input id="search-field" class="w-75 ps-2" type="text" placeholder="enter city">
-            <input onclick="search()" type="submit" value="Search">
+            <input id="search-field" class="w-50 p-2 rounded" type="text" placeholder="enter city">
+            <input onclick="search()" class="p-2 rounded" type="submit" value="Search">
         </div>
         <!-- empty field error mgs -->
         <div id="emptyText" class="text-danger mt-5 text-center"> </div>
-
+        <!-- no result found -->
+        <div id="no-result" class="text-danger mt-5 text-center"> </div>
+        <!-- container// -->
         <div id="weather-status" class="row row-cols-1 row-cols-md-2">  </div>
         <!-- <div id="city-status" class="row row-cols-1 row-cols-md-2"> </div> -->
 
