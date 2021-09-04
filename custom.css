@@ -1,0 +1,6 @@
+#background{
+    background-image: url(img/default.jpg);
+    height: 100vh;
+    background-size:cover;
+    background-position-x:center; 
+}
